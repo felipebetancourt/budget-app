@@ -15,4 +15,21 @@ def leap_year(year):
     return answer
 
 
+def check_date(date):
 
+    # date format checks
+    if len(date) != 10 or date[2] != "/" or date[5] != "/":
+
+        raise Exception('Something wrong with date format')
+
+    day = int(date[0:1])
+    month = int(date[3:4])
+    year = int(date[6:9])
+
+    # check if months and days are alright
+
+
+
+
+
+check_date(date="321261")
