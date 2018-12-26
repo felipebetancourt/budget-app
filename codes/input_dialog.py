@@ -17,6 +17,12 @@ def leap_year(year):
 
 def check_date(date):
 
+    """
+    Check for date formats and that all days, months and years given are coherent.
+    :param date: string of the form "DD/MM/YYYY"
+    :return:
+    """
+
     # date format checks
     if len(date) != 10 or date[2] != "/" or date[5] != "/":
 
