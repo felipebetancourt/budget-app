@@ -41,9 +41,14 @@ def check_date(date):
     if leap_year(year=year):
         print('you had a leap-year')
         if month == 2:
-            if day > 28:
+            if day > 29:
                 print('Wrong day for February. This is a leap year.')
                 date_ok = False
+    elif month == 2:
+        if day > 28:
+            print('Wrong number of days for this month')
+            date_ok = False
+
 
     if month in [int(x) for x in [1, 3, 5, 7, 8, 10, 12]]:
         if day < 1 or day > 31:
