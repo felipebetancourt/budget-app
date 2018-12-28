@@ -50,4 +50,23 @@ def check_date(date):
         if day < 1 or day > 30:
             raise Exception('Wrong number of days for this month')
 
-    print("Date is alright")
+
+def check_quantity(quantity):
+
+    """
+    Takes the parameter **quantity**, transforms it into float and rounds it to two decimals.
+    :param quantity: quantity input
+    :return: float with two decimals.
+    """
+
+    return round(float(quantity), 2)
+
+
+# Sequence for common-input
+date = input("Date [DD/MM/YYYY]: ")
+check_date(date=date)
+concept = input("Concept: ")
+quantity_raw = input("Quantity: ")
+quantity = check_quantity(quantity=quantity_raw)
+
+
