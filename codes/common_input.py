@@ -23,6 +23,8 @@ def check_date(date):
     :return:
     """
 
+    date_ok = True
+
     # date format checks
     if len(date) != 10 or date[2] != "/" or date[5] != "/":
         print('Something wrong with date format')
@@ -41,9 +43,13 @@ def check_date(date):
     if leap_year(year=year):
         print('you had a leap-year')
         if month == 2:
-            if day > 28:
+            if day > 29:
                 print('Wrong day for February. This is a leap year.')
                 date_ok = False
+    elif month == 2:
+        if day > 28:
+            print('Wrong number of days for this month')
+            date_ok = False
 
     if month in [int(x) for x in [1, 3, 5, 7, 8, 10, 12]]:
         if day < 1 or day > 31:
@@ -80,7 +86,7 @@ def common_input():
     date_ok = check_date(date=date)
 
     # check if data format is right. Ask again if not.
-    while not date_ok:
+    while date_ok == False:
         date = input("Date [DD/MM/YYYY]: ")
         date_ok = check_date(date=date)
 
