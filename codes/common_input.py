@@ -42,11 +42,11 @@ def check_date(date):
             if day > 28:
                 raise Exception('Wrong day for February. This is a leap year.')
 
-    if month in [1, 3, 5, 7, 8, 10, 12]:
+    if month in [int(x) for x in [1, 3, 5, 7, 8, 10, 12]]:
         if day < 1 or day > 31:
             raise Exception('Wrong number of days for this month')
 
-    elif month in [4, 6, 9, 11]:
+    elif month in [int(x) for x in [4, 6, 9, 11]]:
         if day < 1 or day > 30:
             raise Exception('Wrong number of days for this month')
 
@@ -62,11 +62,20 @@ def check_quantity(quantity):
     return round(float(quantity), 2)
 
 
-# Sequence for common-input
-date = input("Date [DD/MM/YYYY]: ")
-check_date(date=date)
-concept = input("Concept: ")
-quantity_raw = input("Quantity: ")
-quantity = check_quantity(quantity=quantity_raw)
+def common_input():
 
+    """
+    Create function with sequence and checks for common_input
+    :return: date, concept and quantity
+    """
 
+    # Sequence for common-input
+    date = input("Date [DD/MM/YYYY]: ")
+    check_date(date=date)
+    concept = input("Concept: ")
+    quantity_raw = input("Quantity: ")
+    quantity = check_quantity(quantity=quantity_raw)
+
+    return date, concept, quantity
+
+common_input()
