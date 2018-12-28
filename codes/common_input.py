@@ -89,5 +89,3 @@ def common_input():
     quantity = check_quantity(quantity=quantity_raw)
 
     return date, concept, quantity
-
-date, concept, quantity = common_input()
