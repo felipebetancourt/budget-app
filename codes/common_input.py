@@ -25,7 +25,8 @@ def check_date(date):
 
     # date format checks
     if len(date) != 10 or date[2] != "/" or date[5] != "/":
-        raise Exception('Something wrong with date format')
+        print('Something wrong with date format')
+        date_ok = False
 
     day = int(date[0:2])
     month = int(date[3:5])
@@ -33,22 +34,28 @@ def check_date(date):
 
     # check if year is 2009 or larger
     if year < 2019:
-        raise Exception('You sure about the year you put?')
+        print('You sure about the year you put?')
+        date_ok = False
 
     # According to leap_year output, set number of days in February
     if leap_year(year=year):
         print('you had a leap-year')
         if month == 2:
             if day > 28:
-                raise Exception('Wrong day for February. This is a leap year.')
+                print('Wrong day for February. This is a leap year.')
+                date_ok = False
 
     if month in [int(x) for x in [1, 3, 5, 7, 8, 10, 12]]:
         if day < 1 or day > 31:
-            raise Exception('Wrong number of days for this month')
+            print('Wrong number of days for this month')
+            date_ok = False
 
     elif month in [int(x) for x in [4, 6, 9, 11]]:
         if day < 1 or day > 30:
-            raise Exception('Wrong number of days for this month')
+            print('Wrong number of days for this month')
+            date_ok = False
+
+    return date_ok
 
 
 def check_quantity(quantity):
@@ -69,13 +76,18 @@ def common_input():
     :return: date, concept and quantity
     """
 
-    # Sequence for common-input
     date = input("Date [DD/MM/YYYY]: ")
-    check_date(date=date)
+    date_ok = check_date(date=date)
+
+    # check if data format is right. Ask again if not.
+    while not date_ok:
+        date = input("Date [DD/MM/YYYY]: ")
+        date_ok = check_date(date=date)
+
     concept = input("Concept: ")
     quantity_raw = input("Quantity: ")
     quantity = check_quantity(quantity=quantity_raw)
 
     return date, concept, quantity
 
-common_input()
+date, concept, quantity = common_input()
