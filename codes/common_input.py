@@ -86,7 +86,7 @@ def common_input():
     date_ok = check_date(date=date)
 
     # check if data format is right. Ask again if not.
-    while date_ok == False:
+    while not date_ok:
         date = input("Date [DD/MM/YYYY]: ")
         date_ok = check_date(date=date)
 
