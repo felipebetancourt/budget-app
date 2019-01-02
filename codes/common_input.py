@@ -41,7 +41,6 @@ def check_date(date):
 
     # According to leap_year output, set number of days in February
     if leap_year(year=year):
-        print('you had a leap-year')
         if month == 2:
             if day > 29:
                 print('Wrong day for February. This is a leap year.')
@@ -95,7 +94,3 @@ def common_input():
     quantity = check_quantity(quantity=quantity_raw)
 
     return date, concept, quantity
-
-
-date, concept, quantity = common_input()
-

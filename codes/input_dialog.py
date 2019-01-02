@@ -5,7 +5,7 @@ def transaction_type():
 
     """
     Print instructions for input-dialog and save the input form user.
-    :return: 1, 2 or 3 depending on the transaction that the user wants to perform.
+    :return: CASH_OUT, CASH_IN or SAVING depending on the transaction that the user wants to perform.
     """
 
     print("Welcome to your input-dialog \n")
@@ -15,10 +15,20 @@ def transaction_type():
     print("[2] Cash in \n")
     print("[3] Savings \n")
 
-    answer = int(input("Select 1, 2 or 3 : "))
+    user_input = int(input("Select 1, 2 or 3 : "))
 
-    while answer not in [int(x) for x in [1, 2, 3]]:
-        answer = int(input("Select 1, 2 or 3 : "))
+    while user_input not in [int(x) for x in [1, 2, 3]]:
+
+        user_input = int(input("Select 1, 2 or 3 : "))
+
+    if user_input == 1:
+        answer = "CASH_OUT"
+    elif user_input == 2:
+        answer = "CASH_IN"
+    elif user_input == 3:
+        answer = "SAVING"
+    else:
+        raise Exception("Error in transaction_type(). Invalid user_input.")
 
     return answer
 
@@ -91,7 +101,7 @@ def do_cash_out():
                        "sport",
                        "transportation"]:
 
-        sink = input("Source: ")
+        sink = input("Sink: ")
 
     payment_mean = input("Payment mean: ")
 
@@ -101,3 +111,50 @@ def do_cash_out():
 
     return date, concept, quantity, sink, payment_mean
 
+
+def input_dialog(input_type):
+
+    """
+    According to the transaction type, ask for some inputs and return them.
+    Raise an error in case of wrong transaction type.
+    """
+
+    if input_type == "CASH_OUT":
+
+        date, concept, quantity, sink, payment_mean = do_cash_out()
+
+        return date, concept, quantity, sink, payment_mean
+
+    elif input_type == "CASH_IN":
+
+        date, concept, quantity, source = do_cash_in()
+
+        return date, concept, quantity, source
+
+    elif input_type == "SAVING":
+
+        date, concept, quantity = do_savings()
+
+        return date, concept, quantity
+
+    else:
+        raise Exception("Error in input_dialog(). invalid transaction type.")
+
+
+input_type = transaction_type()
+
+if input_type == "CASH_OUT":
+
+    date, concept, quantity, sink, payment_mean = input_dialog(input_type=input_type)
+
+elif input_type == "CASH_IN":
+
+    date, concept, quantity, source = input_dialog(input_type=input_type)
+
+elif input_type == "SAVING":
+
+    date, concept, quantity = input_dialog(input_type=input_type)
+
+else:
+
+    raise Exception("Error in transaction type.")
