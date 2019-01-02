@@ -49,13 +49,24 @@ def do_cash_in():
 
     source = input("Source: ")
 
-    while source not in ["parents", "erasmus", "bank", "work", "others"]:
+    while source not in ["parents",
+                         "erasmus",
+                         "bank",
+                         "work",
+                         "others"]:
+
         source = input("Source: ")
 
     return date, concept, quantity, source
 
 
 def do_cash_out():
+
+    """
+    Dialog for cash-out. Apart from the common input it contains other two fields: "sink" to specify which kind of
+    expense it was and "payment_mean" to specify how the payment was made.
+    :return: date, concept, quantity, sink, payment_mean
+    """
 
     date, concept, quantity = ci()
 
@@ -76,7 +87,13 @@ def do_cash_out():
 
         sink = input("Source: ")
 
-    return date, concept, quantity, sink
+    payment_mean = input("Payment mean: ")
+
+    while payment_mean not in ["cash",
+                              "debit",
+                              "credit"]
+
+        payment_mean = input("Payment mean: ")
 
 
-date, concept, quantity, sink = do_cash_out()
+    return date, concept, quantity, sink, payment_mean
