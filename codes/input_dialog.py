@@ -117,6 +117,7 @@ def input_dialog(input_type):
     """
     According to the transaction type, ask for some inputs and return them.
     Raise an error in case of wrong transaction type.
+    :param input_type: type of input. "CASH_OUT", "CASH_IN" or "SAVING".
     """
 
     if input_type == "CASH_OUT":
@@ -139,22 +140,3 @@ def input_dialog(input_type):
 
     else:
         raise Exception("Error in input_dialog(). invalid transaction type.")
-
-
-input_type = transaction_type()
-
-if input_type == "CASH_OUT":
-
-    date, concept, quantity, sink, payment_mean = input_dialog(input_type=input_type)
-
-elif input_type == "CASH_IN":
-
-    date, concept, quantity, source = input_dialog(input_type=input_type)
-
-elif input_type == "SAVING":
-
-    date, concept, quantity = input_dialog(input_type=input_type)
-
-else:
-
-    raise Exception("Error in transaction type.")
