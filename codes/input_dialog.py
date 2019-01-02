@@ -30,6 +30,8 @@ def do_savings():
     :return: date, concept, quantity
     """
 
+    print("Enter some saving statement: \n")
+
     date, concept, quantity = ci()
 
     return date, concept, quantity
@@ -43,9 +45,11 @@ def do_cash_in():
     :return: date, concept, quantity, source
     """
 
+    print("Enter some cash-in statement: \n")
+
     date, concept, quantity = ci()
 
-    print("Choose one of the soruces: parents, erasmus, bank, work, others \n")
+    print("Choose one of the sources: parents, erasmus, bank, work, others \n")
 
     source = input("Source: ")
 
@@ -68,6 +72,8 @@ def do_cash_out():
     :return: date, concept, quantity, sink, payment_mean
     """
 
+    print("Enter some cash-out statement: ")
+
     date, concept, quantity = ci()
 
     print("Choose one of the sinks: \n")
@@ -89,11 +95,9 @@ def do_cash_out():
 
     payment_mean = input("Payment mean: ")
 
-    while payment_mean not in ["cash",
-                              "debit",
-                              "credit"]
+    while payment_mean not in ["cash", "debit", "credit"]:
 
         payment_mean = input("Payment mean: ")
 
-
     return date, concept, quantity, sink, payment_mean
+

@@ -98,3 +98,4 @@ def common_input():
 
 
 date, concept, quantity = common_input()
+
