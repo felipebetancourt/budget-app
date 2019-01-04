@@ -89,6 +89,3 @@ def menu_dialog():
     else:
 
         raise Exception("Error in menu_dialog(). Invalid menu choice. ")
-
-
-menu_dialog()
