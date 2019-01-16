@@ -16,5 +16,3 @@ def generate_log():
             header_writer = csv.writer(csvfile, delimiter=',')
             header_writer.writerow(['Date and time', 'ID', 'Operation'])
 
-
-generate_log()
