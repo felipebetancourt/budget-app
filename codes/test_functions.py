@@ -1,3 +1,4 @@
+from unittest.mock import patch
 import unittest
 from input_dialog import *
 from common_input import *
@@ -25,6 +26,17 @@ class TestFuntions(unittest.TestCase):
     def test_check_quantity(self):
 
         self.assertEqual(check_quantity(12.6589), 12.66)
+
+    def test_transaction_type(self):
+
+        with patch('builtins.input', side_effect='1'):
+            self.assertEqual(transaction_type(), 'CASH_OUT')
+
+        with patch('builtins.input', side_effect='2'):
+            self.assertEqual(transaction_type(), 'CASH_IN')
+
+        with patch('builtins.input', side_effect='3'):
+            self.assertEqual(transaction_type(), 'SAVING')
 
 
 if __name__ == '__main__':
