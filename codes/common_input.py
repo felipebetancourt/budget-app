@@ -34,7 +34,7 @@ def check_date(date):
     month = int(date[3:5])
     year = int(date[6:10])
 
-    # check if year is 2009 or larger
+    # check if year is 2019 or larger
     if year < 2019:
         print('You sure about the year you put?')
         date_ok = False
