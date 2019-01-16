@@ -22,6 +22,10 @@ class TestFuntions(unittest.TestCase):
         self.assertFalse(check_date('31/04/2019'))
         self.assertTrue(check_date('31/01/2019'))
 
+    def test_check_quantity(self):
+
+        self.assertEqual(check_quantity(12.6589), 12.66)
+
 
 if __name__ == '__main__':
     unittest.main()
