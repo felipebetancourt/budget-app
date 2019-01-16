@@ -1,6 +1,7 @@
 from input_dialog import *
 from time import time, gmtime, strftime
 
+
 # TODO: write this function
 def see_summary():
 
@@ -90,25 +91,21 @@ def menu_dialog():
 
         raise Exception("Error in menu_dialog(). Invalid menu choice. ")
 
-print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
 
-print(gmtime())
-
-foo = 1
-def generate_ID(oldID):
+def generate_id(old_id):
 
     """
     Takes the last recognized ID and generates a new one by checking at three things:
     - If the month is the same, just add one more value
     - If the month has changed, set counter to zero and add one month.
     - If year has changed, set month to 01, counter to 0 and add one more year.
-    :param oldID: las ID item
+    :param old_id: las ID item
     :return: new generated ID
     """
 
-    year = oldID[0:2]
-    month = oldID[2:4]
-    counter = int(oldID[-2:])
+    year = old_id[0:2]
+    month = old_id[2:4]
+    counter = int(old_id[-2:])
 
     # Current date and time
     now = gmtime()
@@ -132,16 +129,9 @@ def generate_ID(oldID):
 
         # Make sure that the number of digits is conserved
         if (counter + 1) < 10:
-            counter_new = "0" + str(counter)
+            counter_new = "0" + str(counter+1)
         else:
-            counter_new = str(counter)
+            counter_new = str(counter+1)
 
-
-    # New ID is generated with format YYMMID
-    ID = year_new + month_new + counter_new
-
-    return ID
-
-print(generate_ID('190103'))
-
+    return year_new + month_new + counter_new
 
