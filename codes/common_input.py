@@ -20,7 +20,7 @@ def check_date(date):
     """
     Check for date formats and that all days, months and years given are coherent.
     :param date: string of the form "DD/MM/YYYY"
-    :return:
+    :return: True if date is okay, False if date is wrong
     """
 
     date_ok = True
