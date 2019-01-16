@@ -1,8 +1,11 @@
 from unittest.mock import patch
 import unittest
+
 from input_dialog import *
 from common_input import *
 from menu_dialog import *
+
+from time import gmtime, strftime
 
 
 class TestFuntions(unittest.TestCase):
@@ -37,6 +40,14 @@ class TestFuntions(unittest.TestCase):
 
         with patch('builtins.input', side_effect='3'):
             self.assertEqual(transaction_type(), 'SAVING')
+
+    def test_generate_id(self):
+
+        year = strftime("%y", gmtime())
+        month = strftime("%m", gmtime())
+
+        self.assertEqual(generate_id(year + month + '03'), year + month + '04')
+        self.assertEqual(generate_id(year + month + '99'), year + month + '00')
 
 
 if __name__ == '__main__':

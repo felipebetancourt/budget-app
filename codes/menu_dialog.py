@@ -1,5 +1,5 @@
 from input_dialog import *
-from time import time, gmtime, strftime
+from time import gmtime, strftime
 
 
 # TODO: write this function
@@ -95,43 +95,26 @@ def menu_dialog():
 def generate_id(old_id):
 
     """
-    Takes the last recognized ID and generates a new one by checking at three things:
-    - If the month is the same, just add one more value
-    - If the month has changed, set counter to zero and add one month.
-    - If year has changed, set month to 01, counter to 0 and add one more year.
+    Takes the last recognized ID and generates a new one by adding new counter. If current counter is 99, puts 00.
+    ID format: YYMMCC (YY: year, MM: month, CC: counter)
     :param old_id: las ID item
     :return: new generated ID
     """
 
-    year = old_id[0:2]
-    month = old_id[2:4]
     counter = int(old_id[-2:])
 
     # Current date and time
     now = gmtime()
 
-    if not (year == strftime("%y", now)):
+    year_new = strftime("%y", now)
+    month_new = strftime("%m", now)
 
-        year_new = strftime("%y", now)
-        month_new = "01"
+    # Make sure that the number of digits is conserved
+    if (counter + 1) < 10:
+        counter_new = "0" + str(counter + 1)
+    elif (counter + 1) > 99:
         counter_new = "00"
-
-    if not (month == strftime("%m", now)):
-
-        year_new = year
-        month_new = strftime("%m", now)
-        counter_new = "00"
-
-    if month == strftime("%m", now):
-
-        year_new = year
-        month_new = month
-
-        # Make sure that the number of digits is conserved
-        if (counter + 1) < 10:
-            counter_new = "0" + str(counter+1)
-        else:
-            counter_new = str(counter+1)
+    else:
+        counter_new = str(counter + 1)
 
     return year_new + month_new + counter_new
-
